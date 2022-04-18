@@ -323,6 +323,7 @@ class ARGearSessionView : FrameLayout {
             false, false, false, ratio
         )
         argMedia.startRecording()
+        return videoFilePath
     }
 
     fun stopRecording(callback: MediaStoreUtil.OnMediaStoreCallback) {
