@@ -5,7 +5,8 @@ import 'package:argear_flutter_plugin/argear_flutter_plugin.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
-typedef ARGearControllerCallback = void Function(String method, dynamic arguments);
+typedef ARGearControllerCallback = void Function(
+    String method, dynamic arguments);
 
 class ARGearController {
   ARGearController({
@@ -56,9 +57,8 @@ class ARGearController {
 
   changeCameraRatio(ARGCameraRatio ratio) async {
     try {
-      await _channel.invokeMethod<dynamic>('changeCameraRatio', {
-        'ratio': ratio.index
-      });
+      await _channel
+          .invokeMethod<dynamic>('changeCameraRatio', {'ratio': ratio.index});
     } on PlatformException catch (e) {
       debugPrint('${e.code}: ${e.message}');
     }
@@ -66,9 +66,8 @@ class ARGearController {
 
   setVideoBitrate(ARGVideoBitrate bitrate) async {
     try {
-      await _channel.invokeMethod<dynamic>('setVideoBitrate', {
-        'bitrate': bitrate.index
-      });
+      await _channel
+          .invokeMethod<dynamic>('setVideoBitrate', {'bitrate': bitrate.index});
     } on PlatformException catch (e) {
       debugPrint('${e.code}: ${e.message}');
     }
@@ -77,9 +76,8 @@ class ARGearController {
   setSticker(ItemModel itemModel) async {
     onPre?.call('preCallback', 'setSticker');
     try {
-      var result = await _channel.invokeMethod<dynamic>('setSticker', {
-        'itemModel': jsonEncode(itemModel).toString()
-      });
+      var result = await _channel.invokeMethod<dynamic>(
+          'setSticker', {'itemModel': jsonEncode(itemModel).toString()});
       if (result != null) {
         onComplete?.call('completeCallback', result.toString());
       }
@@ -100,9 +98,8 @@ class ARGearController {
   setFilter(ItemModel itemModel) async {
     onPre?.call('preCallback', 'setFilter');
     try {
-      var result = await _channel.invokeMethod<dynamic>('setFilter', {
-        'itemModel': jsonEncode(itemModel).toString()
-      });
+      var result = await _channel.invokeMethod<dynamic>(
+          'setFilter', {'itemModel': jsonEncode(itemModel).toString()});
       if (result != null) {
         onComplete?.call('completeCallback', result.toString());
       }
@@ -114,9 +111,7 @@ class ARGearController {
 
   setFilterLevel(double level) async {
     try {
-      await _channel.invokeMethod<dynamic>('setFilterLevel', {
-        'level': level
-      });
+      await _channel.invokeMethod<dynamic>('setFilterLevel', {'level': level});
     } on PlatformException catch (e) {
       debugPrint('${e.code}: ${e.message}');
     }
@@ -132,10 +127,8 @@ class ARGearController {
 
   setBeauty(ARGBeauty type, double value) async {
     try {
-      await _channel.invokeMethod<dynamic>('setBeauty', {
-        'type': type.index,
-        'value': value
-      });
+      await _channel.invokeMethod<dynamic>(
+          'setBeauty', {'type': type.index, 'value': value});
     } on PlatformException catch (e) {
       debugPrint('${e.code}: ${e.message}');
     }
@@ -169,9 +162,7 @@ class ARGearController {
 
   setBulge(ARGBulge type) async {
     try {
-      await _channel.invokeMethod<dynamic>('setBulge', {
-        'type': type.index
-      });
+      await _channel.invokeMethod<dynamic>('setBulge', {'type': type.index});
     } on PlatformException catch (e) {
       debugPrint('${e.code}: ${e.message}');
     }
@@ -193,15 +184,16 @@ class ARGearController {
     }
   }
 
-  startRecording() async {
+  Future<String> startRecording() async {
     try {
-      await _channel.invokeMethod<dynamic>('startRecording');
+      return await _channel.invokeMethod<dynamic>('startRecording');
     } on PlatformException catch (e) {
       debugPrint('${e.code}: ${e.message}');
+      return '';
     }
   }
 
-  stopRecording() async {
+  Future stopRecording() async {
     onPre?.call('preCallback', 'stopRecording');
     try {
       await _channel.invokeMethod<dynamic>('stopRecording');

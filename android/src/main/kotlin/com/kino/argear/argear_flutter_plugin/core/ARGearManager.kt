@@ -44,7 +44,7 @@ object ARGearManager {
 
     fun setMediaPath(context: Context, folderName: String) {
         mediaFolderName = folderName
-        mediaPath = Environment.getExternalStorageDirectory().toString() +
+        mediaPath = context.getFileStreamPath("test").toString() +
                 File.separator + Environment.DIRECTORY_DCIM + File.separator + folderName
         mediaPath?.let {
             val dir = File(it)

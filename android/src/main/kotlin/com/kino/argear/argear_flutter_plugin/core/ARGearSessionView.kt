@@ -69,7 +69,7 @@ class ARGearSessionView : FrameLayout {
     private var isShootingComplete = false
     private var isVideoRecord = false
 
-    private var videoFilePath: String = ""
+    var videoFilePath: String = ""
 
     var gLViewWidth = 0
     var gLViewHeight = 0
@@ -77,6 +77,10 @@ class ARGearSessionView : FrameLayout {
     private fun init() {
         ARGearManager.setMediaPath(context, "/ARGEAR")
         clearTempMediaFiles()
+    }
+
+    fun getFilePath(): String {
+        return videoFilePath
     }
 
     fun setUpSdk(apiUrl: String, apiKey: String, secretKey: String, authKey: String, channel: MethodChannel, activity: Activity) {

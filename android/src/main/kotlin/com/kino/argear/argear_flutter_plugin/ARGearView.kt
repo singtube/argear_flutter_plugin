@@ -142,7 +142,7 @@ class ARGearView(private val activity: Activity, context: Context, messenger: Bi
             "stopRecording" -> {
                 arGearSessionView?.stopRecording(object : MediaStoreUtil.OnMediaStoreCallback {
                     override fun onComplete() {
-                        methodChannel.invokeMethod("recordingCallback", "success")
+                        methodChannel.invokeMethod("recordingCallback", arGearSessionView?.videoFilePath)
                     }
                 })
             }
