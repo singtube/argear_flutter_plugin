@@ -301,7 +301,7 @@ class ARGearSessionView : FrameLayout {
         }
     }
 
-    fun startRecording() {
+    fun startRecording() : String{
 
         val bitrate = ARGearManager.getVideoBitrate()
         val ratio: ARGMedia.Ratio = when (ARGearManager.screenRatio) {
@@ -315,7 +315,7 @@ class ARGearSessionView : FrameLayout {
                 ARGMedia.Ratio.RATIO_1_1
             }
         }
-        val previewSize: IntArray = camera.previewSize ?: return
+        val previewSize: IntArray = camera.previewSize ?: return ""
 
         videoFilePath = ARGearManager.createVideoPath()
         argMedia.initRecorder(

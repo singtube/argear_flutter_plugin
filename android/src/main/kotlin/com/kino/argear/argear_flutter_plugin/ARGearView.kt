@@ -137,7 +137,7 @@ class ARGearView(private val activity: Activity, context: Context, messenger: Bi
                 arGearSessionView?.takePicture()
             }
             "startRecording" -> {
-                return arGearSessionView?.startRecording()
+                arGearSessionView?.startRecording()
             }
             "stopRecording" -> {
                 arGearSessionView?.stopRecording(object : MediaStoreUtil.OnMediaStoreCallback {
