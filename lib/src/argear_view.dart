@@ -6,7 +6,6 @@ typedef ARGearViewCreatedCallback = void Function(ARGearController controller);
 typedef PlatformViewCreatedCallback = void Function(int id);
 
 class ARGearView extends StatefulWidget {
-
   final ARGearViewCreatedCallback onArGearViewCreated;
   final String? apiUrl;
   final String? apiKey;
@@ -54,7 +53,7 @@ class _ARGearViewState extends State<ARGearView> with WidgetsBindingObserver {
     }
     return Center(
       child: Text(
-        '$defaultTargetPlatform is not supported by the argear_view plugin'),
+          '$defaultTargetPlatform is not supported by the argear_view plugin'),
     );
   }
 
@@ -62,16 +61,18 @@ class _ARGearViewState extends State<ARGearView> with WidgetsBindingObserver {
     // if (widget.onArGearViewCreated == null) {
     //   return;
     // }
-    widget.onArGearViewCreated(ARGearController(
-      id: id,
-      apiUrl: widget.apiUrl,
-      apiKey: widget.apiKey,
-      secretKey: widget.secretKey,
-      authKey: widget.authKey,
-      onCallback: widget.onCallback,
-      onPre: widget.onPre,
-      onComplete: widget.onComplete,
-    ));
+    widget.onArGearViewCreated(
+      ARGearController(
+        id: id,
+        apiUrl: widget.apiUrl,
+        apiKey: widget.apiKey,
+        secretKey: widget.secretKey,
+        authKey: widget.authKey,
+        onCallback: widget.onCallback,
+        onPre: widget.onPre,
+        onComplete: widget.onComplete,
+      ),
+    );
   }
 
   @override
