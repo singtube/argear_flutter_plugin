@@ -645,7 +645,7 @@ class ReferenceCamera1(context: Context, listener: CameraListener?) :
          */
         @SuppressLint("Assert")
         fun release() {
-            assert(processingThread?.state == Thread.State.TERMINATED)
+         //   assert(processingThread?.state == Thread.State.TERMINATED)
         }
 
         /** Marks the runnable as active/not active. Signals any blocked threads to continue.  */
